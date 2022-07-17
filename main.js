@@ -1,7 +1,7 @@
 
 /* AGREGAR DEPORTISTA */
 class Deportista {
-    constructor(nombre, apellido, dni, edad, deporte, entrenador, institucion, wellness){
+    constructor(nombre, apellido, dni, edad, deporte, entrenador, institucion, preWellness, postWellness){
     this.nombre = nombre;
     this.apellido = apellido;
     this.dni = dni;
@@ -9,7 +9,8 @@ class Deportista {
     this.deporte = deporte;
     this.entrenador = entrenador;
     this.institucion = institucion;
-    this.wellness = wellness;
+    this.preWellness = preWellness;
+    this.postWellness = postWellness;
     }
 };
 
@@ -24,26 +25,25 @@ const agregarDeportista = () => {
     let entrenador = prompt("Ingrese el nombre de su entrenador");
     let institucion = prompt("Indique el nombre de la institucion donde entrena.");
 
-    let deportistaNuevo = new Deportista(nombre, apellido, dni, edad, deporte, entrenador, institucion, wellness);
+    let deportistaNuevo = new Deportista(nombre, apellido, dni, edad, deporte, entrenador, institucion, preWellness, postWellness);
     deportistas.push(deportistaNuevo);
 
     return deportistaNuevo; 
 };
 
-//activar funcion
-// agregarDeportista();
 console.log(deportistas);
 
 
 
 /* FORMULARIO WELLNESS */
 class PreWellness {
-    constructor(fatiga, calidadSueno, danoMuscular, estres, animico, lesiones){
-        this.fatiga = fatiga;
+    constructor(cantidadSueno, calidadSueno, animico, estres, cansancio, fatiga, lesiones){
+        this.cantidadSueno = cantidadSueno;
         this.calidadSueno = calidadSueno;
-        this.danoMuscular = danoMuscular;
-        this.estres = estres;
         this.animico = animico;
+        this.estres = estres;
+        this.cansancio = cansancio;
+        this.fatiga = fatiga;
         this.lesiones = lesiones;
         
     }
@@ -52,43 +52,65 @@ class PreWellness {
 let preWellness = [];
 
 const llenarFormulario1 = () => {
-    let fatiga = parseInt(prompt("Ingrese su nivel de fatiga actual del 1 al 10"));
-    let calidadSueno = parseInt(prompt("Ingrese su calidad de sueño del 1 al 10"));
-    let danoMuscular = prompt("Tiene daño muscular?");
+    let cantidadSueno = parseFloat(prompt("Ingrese la cantidad de horas de sueño (hh:mm)."))
+    let calidadSueno = parseInt(prompt("Ingrese su calidad de sueño del 1 al 10."));
+    let animico = parseInt(prompt("Como se encuentra animicamente/de humor del 1 al 5?"));
     let estres = parseInt(prompt("Que tan estresado se siente del 1 al 10?"));
-    let animico = parseInt(prompt("Como se encuentra animicamente del 1 al 10?"));
-    let lesiones = prompt("Tiene alguna lesion?");
+    let cansancio = parseInt(prompt("Ingrese su nivel de cansancio general del 1 al 10."))
+    let fatiga = prompt("Tiene fatiga o dolor muscular? Responda por 'si' o 'no'.");
+    let lesiones = prompt("Tiene alguna lesion? Responda por 'si' o 'no'.");
 
-    let formNuevo = new PreWellness(fatiga, calidadSueno, danoMuscular, estres, animico, lesiones);
+    let formNuevo = new PreWellness(cantidadSueno, calidadSueno, animico, estres, cansancio, fatiga,   lesiones);
     preWellness.push(formNuevo);
 
-    let booleano;
-if (danoMuscular == "si") {
-    booleano = true;
-} else if(danoMuscular == "no") {
-    booleano = false;
-} else {
-    alert("su respuesta es incorrecta. Ingrese 'si' o 'no'")
-}
-
-if (lesiones == "si") {
-    booleano = true;
-} else if(lesiones == "no") {
-    booleano = false;
-} else {
-    alert("su respuesta es incorrecta. Ingrese 'si' o 'no'")
-}
+    if (lesiones == "si") {
+        lesiones = true;
+        } else if(lesiones == "no") {
+            lesiones = false;
+            } else {
+        alert("su respuesta es incorrecta. Ingrese 'si' o 'no'")
+        }
 
 }
 
-/* llenarFormulario(); */
-console.log(preWellness);
+/*  */
+class PostWellness {
+    constructor(exigencia, cansancio, fatiga, lesiones) {
+        this.exigencia = exigencia;
+        this.cansancio = cansancio;
+        this.fatiga = fatiga;
+        this.lesiones = lesiones;
+    }
 
+}
+
+let postWellness = [];
+
+const llenarFormulario2 = () => {
+    let exigencia = parseInt(prompt("Ingrese el nivel de exigencia percibido en su entrenamiento del 1 al 10."));
+    let cansancio = parseInt(prompt("Ingrese el nivel de cansancio post entrenamiento del 1 al 10."));
+    let fatiga = prompt("Tiene fatiga o dolor muscular? Responda por 'si' o 'no'.");
+    let lesiones = prompt("Tiene alguna lesion? Responda por 'si' o 'no'.");
+
+    let formNuevo1 = new PostWellness(exigencia, cansancio, fatiga, lesiones);
+    postWellness.push(formNuevo1);
+
+    if (lesiones == "si") {
+        lesiones = true;
+        } else if(lesiones == "no") {
+            lesiones = false;
+            } else {
+        alert("su respuesta es incorrecta. Ingrese 'si' o 'no'")
+        }
+}
+
+/* ESTADISTICAS */
 
 const estadisticas = () => {
     let estadistica = prompt("Escriba el nombre del deportista");
-    if (estadisticas == Deportista.nombre) {
-        alert(wellnes); 
+    if (estadistica  == Deportista.indexOf(nombre)) {
+        console.log(preWellnes); 
+        console.log(postWellness);
     }
 }
 

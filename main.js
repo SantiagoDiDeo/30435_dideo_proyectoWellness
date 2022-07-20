@@ -54,7 +54,7 @@ let preWellness = [];
 const llenarFormulario1 = () => {
     let cantidadSueno = parseFloat(prompt("Ingrese la cantidad de horas de sueño (hh:mm)."))
     let calidadSueno = parseInt(prompt("Ingrese su calidad de sueño del 1 al 10."));
-    let animico = parseInt(prompt("Como se encuentra animicamente/de humor del 1 al 5?"));
+    let animico = parseInt(prompt("Como se encuentra animicamente/de humor del 1 al 10?"));
     let estres = parseInt(prompt("Que tan estresado se siente del 1 al 10?"));
     let cansancio = parseInt(prompt("Ingrese su nivel de cansancio general del 1 al 10."))
     let fatiga = prompt("Tiene fatiga o dolor muscular? Responda por 'si' o 'no'.");
@@ -63,17 +63,28 @@ const llenarFormulario1 = () => {
     let formNuevo = new PreWellness(cantidadSueno, calidadSueno, animico, estres, cansancio, fatiga,   lesiones);
     preWellness.push(formNuevo);
 
-    if (lesiones == "si") {
+    if (lesiones === "si") {
         lesiones = true;
-        } else if(lesiones == "no") {
+        } else if(lesiones === "no") {
             lesiones = false;
             } else {
-        alert("su respuesta es incorrecta. Ingrese 'si' o 'no'")
+        alert("su respuesta es incorrecta. Ingrese 'si' o 'no'");
+        lesiones = prompt("Tiene alguna lesion? Responda por 'si' o 'no'.");
+        preWellness.push(lesiones);
         }
+
+        if (fatiga === "si") {
+            fatiga = true;
+            } else if(fatiga === "no") {
+                fatiga = false;
+                } else {
+            alert("su respuesta es incorrecta. Ingrese 'si' o 'no'");
+            fatiga = prompt("Tiene alguna lesion? Responda por 'si' o 'no'.");
+            preWellness.push(fatiga);
+            }    
 
 }
 
-/*  */
 class PostWellness {
     constructor(exigencia, cansancio, fatiga, lesiones) {
         this.exigencia = exigencia;
@@ -95,33 +106,34 @@ const llenarFormulario2 = () => {
     let formNuevo1 = new PostWellness(exigencia, cansancio, fatiga, lesiones);
     postWellness.push(formNuevo1);
 
-    if (lesiones == "si") {
+    if (lesiones === "si") {
         lesiones = true;
-        } else if(lesiones == "no") {
+        } else if(lesiones === "no") {
             lesiones = false;
             } else {
-        alert("su respuesta es incorrecta. Ingrese 'si' o 'no'")
+        alert("su respuesta es incorrecta. Ingrese 'si' o 'no'");
+        lesiones = prompt("Tiene alguna lesion? Responda por 'si' o 'no'.");
+        postWellness.push(lesiones);
         }
+
+        if (fatiga === "si") {
+            fatiga = true;
+            } else if(fatiga === "no") {
+                fatiga = false;
+                } else {
+            alert("su respuesta es incorrecta. Ingrese 'si' o 'no'");
+            fatiga = prompt("Tiene alguna lesion? Responda por 'si' o 'no'.");
+            postWellness.push(fatiga);
+            }    
 }
 
 /* ESTADISTICAS */
 
 const estadisticas = () => {
     let estadistica = prompt("Escriba el nombre del deportista");
-    if (estadistica  == Deportista.indexOf(nombre)) {
-        console.log(preWellnes); 
-        console.log(postWellness);
-    }
+    deportistas.forEach(deportistas => {
+        console.log(deportistas.preWellness);
+        console.log(deportistas.postWellness);
+    })
 }
 
-
-/* console.log(agregarDeportista.sort(1, 0, 2, 3, 4, 5, 6)); */
-
-
-/* if (deportistas.includes(Deportista.nombre) == true){
-    let deportista1 = `nombre: ${Deportista.nombre}`;
-
-    return deportista1;
-}
-
-console.log(deportista1); */

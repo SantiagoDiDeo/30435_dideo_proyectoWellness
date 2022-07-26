@@ -5,6 +5,13 @@
 let deportistas = [];
 let preWellness = [];
 let postWellness = [];
+
+
+
+
+
+
+
 // AGREGAR DEPORTISTA
 class Deportista {
     constructor(nombre, apellido, dni, edad, deporte, entrenador, institucion, preWellness, postWellness){
@@ -25,7 +32,7 @@ class Deportista {
 
 
 const agregarDeportista = () => {
-    let nombre = form1.innerHTML("Ingrese su nombre");
+    let nombre = prompt("Ingrese su nombre");
     let apellido = prompt("Ingrese su apellido");
     let dni = parseInt(prompt("Ingrese su dni sin puntos"));
     let edad = parseInt(prompt("Ingrese su edad"));
@@ -39,12 +46,13 @@ const agregarDeportista = () => {
     return deportistaNuevo; 
 };
 
-console.log(deportistas);
+/* console.log(deportistas); */
 
-let btnDeportista = document.querySelector(".btn-deportista");
-btnDeportista.onclick = () =>{
-    agregarDeportista()
-};
+const btnDeportista = document.querySelector(".btn-deportista");
+btnDeportista.onclick = () => {
+    agregarDeportista();
+}
+
 
 
 /* FORMULARIO WELLNESS */

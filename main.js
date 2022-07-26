@@ -54,7 +54,6 @@ btnDeportista.onclick = () => {
 }
 
 
-
 /* FORMULARIO WELLNESS */
 class PreWellness {
     constructor(cantidadSueno, calidadSueno, animico, estres, cansancio, fatiga, lesiones){

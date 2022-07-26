@@ -1,5 +1,11 @@
 
-/* AGREGAR DEPORTISTA */
+
+//variables
+
+let deportistas = [];
+let preWellness = [];
+let postWellness = [];
+// AGREGAR DEPORTISTA
 class Deportista {
     constructor(nombre, apellido, dni, edad, deporte, entrenador, institucion, preWellness, postWellness){
     this.nombre = nombre;
@@ -14,10 +20,12 @@ class Deportista {
     }
 };
 
-let deportistas = [];
+
+
+
 
 const agregarDeportista = () => {
-    let nombre = prompt("Ingrese su nombre");
+    let nombre = form1.innerHTML("Ingrese su nombre");
     let apellido = prompt("Ingrese su apellido");
     let dni = parseInt(prompt("Ingrese su dni sin puntos"));
     let edad = parseInt(prompt("Ingrese su edad"));
@@ -33,6 +41,10 @@ const agregarDeportista = () => {
 
 console.log(deportistas);
 
+let btnDeportista = document.querySelector(".btn-deportista");
+btnDeportista.onclick = () =>{
+    agregarDeportista()
+};
 
 
 /* FORMULARIO WELLNESS */
@@ -49,7 +61,7 @@ class PreWellness {
     }
 };
 
-let preWellness = [];
+
 
 const llenarFormulario1 = () => {
     let cantidadSueno = parseFloat(prompt("Ingrese la cantidad de horas de sueño (hh:mm)."))
@@ -85,6 +97,11 @@ const llenarFormulario1 = () => {
 
 }
 
+let btnPreWellness = document.querySelector(".btn-prewellness");
+btnPreWellness.onclick = () => {
+    llenarFormulario1();
+};
+
 class PostWellness {
     constructor(exigencia, cansancio, fatiga, lesiones) {
         this.exigencia = exigencia;
@@ -95,7 +112,7 @@ class PostWellness {
 
 }
 
-let postWellness = [];
+
 
 const llenarFormulario2 = () => {
     let exigencia = parseInt(prompt("Ingrese el nivel de exigencia percibido en su entrenamiento del 1 al 10."));
@@ -127,6 +144,11 @@ const llenarFormulario2 = () => {
             }    
 }
 
+let btnPostWellness = document.querySelector(".btn-postwellness");
+btnPostWellness.onclick = () => {
+    llenarFormulario2();
+};
+
 /* ESTADISTICAS */
 
 const estadisticas = () => {
@@ -136,4 +158,18 @@ const estadisticas = () => {
         console.log(deportistas.postWellness);
     })
 }
+
+let btnEstadisticas = document.querySelector(".btn-estadisticas");
+btnEstadisticas.onclick = () => {
+    estadisticas();
+};
+
+
+
+
+
+
+
+
+
 

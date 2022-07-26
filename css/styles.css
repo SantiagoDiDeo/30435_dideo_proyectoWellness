@@ -65,7 +65,7 @@
     margin: 1rem;
     width: 10rem;
     height: 4rem;
-    align-self: center;
+    align-self: flex-start;
     align-items: center;
     justify-content: center;
     border: solid 0.12rem gray;
@@ -73,3 +73,5 @@
     font-size: 1.2rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: lighter; }
+  .main__form1 {
+    display: flex; }

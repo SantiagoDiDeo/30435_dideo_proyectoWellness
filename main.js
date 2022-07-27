@@ -5,18 +5,6 @@
 let deportistas = [];
 let preWellness = [];
 let postWellness = [];
-
-const formularioDeportista = document.querySelector(".main__form1");
-const nombreDeportista = document.querySelector("#nombre");
-const apellidoDeportista = document.querySelector("#apellido");
-const dniDeportista = document.querySelector("#dni");
-const edadDeportista = document.querySelector("#edad");
-const deporteDeportista = document.querySelector("#deporte");
-const entrenadorDeportista = document.querySelector("#entrenador");
-const institucionDeportista = document.querySelector("#institucion");
-
-formularioDeportista.style.display = 'none';
-
 let nombre;
 let apellido;
 let dni;
@@ -25,11 +13,25 @@ let deporte;
 let entrenador;
 let institucion;
 
+const formularioDeportista = document.querySelector(".main__form1");
+const nombreDeportista = document.getElementById("nombre");
+const apellidoDeportista = document.querySelector("#apellido");
+const dniDeportista = document.querySelector("#dni");
+const edadDeportista = document.querySelector("#edad");
+const deporteDeportista = document.querySelector("#deporte");
+const entrenadorDeportista = document.querySelector("#entrenador");
+const institucionDeportista = document.querySelector("#institucion");
 
+
+
+formularioDeportista.style.display = 'none';
+
+let nombreStorage = localStorage.getItem('nombre'); // valor || null
+let apellidoStorage = localStorage.getItem('apellido'); // valor || null
 
 
 // AGREGAR DEPORTISTA
-class Deportista {
+/* class Deportista {
     constructor(nombre, apellido, dni, edad, deporte, entrenador, institucion, preWellness, postWellness){
     this.nombre = nombre;
     this.apellido = apellido;
@@ -42,11 +44,7 @@ class Deportista {
     this.postWellness = postWellness;
     }
 };
-
-let nombreStorage = localStorage.getItem('nombre');
-let apellidoStorage = localStorage.getItem('apellido');
-
-
+ */
 
 const agregarDeportista = () => {
     formularioDeportista.style.display = 'block';
@@ -59,6 +57,8 @@ const agregarDeportista = () => {
     entrenador = entrenadorDeportista.value;
     institucion = institucionDeportista.value;
 
+
+
     localStorage.setItem('nombre', nombre);
     localStorage.setItem('apellido', apellido);
     localStorage.setItem('dni', dni);
@@ -67,17 +67,37 @@ const agregarDeportista = () => {
     localStorage.setItem('entrenador', entrenador);
     localStorage.setItem('institucion', institucion);
     
-    let deportistaNuevo = new Deportista(nombre, apellido, dni, edad, deporte, entrenador, institucion, preWellness, postWellness);
+    /* let deportistaNuevo = new Deportista(nombre, apellido, dni, edad, deporte, entrenador, institucion, preWellness, postWellness);
     deportistas.push(deportistaNuevo);
 
-    return deportistaNuevo; 
+    return deportistaNuevo;  */
+
+    
 };
 
+const verificarStorage = () => {
+    if (nombreStorage !== null && apellidoStorage !== null) {
+    nombre = nombreStorage;
+    apellido = apellidoStorage;
+    
+    } else {
+      // Listener
+    formularioUsuario.addEventListener('submit', (e) => {
+        e.preventDefault();
+        agregarDeportista();
+        nombreFormulario.value = '';
+        apellidoFormulario.value = '';
+    });
+    }
+}
+
+localStorage.setItem('deportistas', JSON.stringify(deportistas));
 
 const btnDeportista = document.querySelector(".btn-deportista");
 btnDeportista.onclick = () => {
     agregarDeportista();
 }
+
 
 
 /* FORMULARIO WELLNESS */

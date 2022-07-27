@@ -6,8 +6,24 @@ let deportistas = [];
 let preWellness = [];
 let postWellness = [];
 
+const formularioDeportista = document.querySelector(".main__form1");
+const nombreDeportista = document.querySelector("#nombre");
+const apellidoDeportista = document.querySelector("#apellido");
+const dniDeportista = document.querySelector("#dni");
+const edadDeportista = document.querySelector("#edad");
+const deporteDeportista = document.querySelector("#deporte");
+const entrenadorDeportista = document.querySelector("#entrenador");
+const institucionDeportista = document.querySelector("#institucion");
 
+formularioDeportista.style.display = 'none';
 
+let nombre;
+let apellido;
+let dni;
+let edad;
+let deporte;
+let entrenador;
+let institucion;
 
 
 
@@ -27,26 +43,36 @@ class Deportista {
     }
 };
 
-
+let nombreStorage = localStorage.getItem('nombre');
+let apellidoStorage = localStorage.getItem('apellido');
 
 
 
 const agregarDeportista = () => {
-    let nombre = prompt("Ingrese su nombre");
-    let apellido = prompt("Ingrese su apellido");
-    let dni = parseInt(prompt("Ingrese su dni sin puntos"));
-    let edad = parseInt(prompt("Ingrese su edad"));
-    let deporte = prompt("Ingrese su deporte");
-    let entrenador = prompt("Ingrese el nombre de su entrenador");
-    let institucion = prompt("Indique el nombre de la institucion donde entrena.");
+    formularioDeportista.style.display = 'block';
 
+    nombre = nombreDeportista.value;
+    apellido = apellidoDeportista.value;
+    dni = dniDeportista.value;
+    edad = edadDeportista.value;
+    deporte = deporteDeportista.value;
+    entrenador = entrenadorDeportista.value;
+    institucion = institucionDeportista.value;
+
+    localStorage.setItem('nombre', nombre);
+    localStorage.setItem('apellido', apellido);
+    localStorage.setItem('dni', dni);
+    localStorage.setItem('edad', edad);
+    localStorage.setItem('deporte', deporte);
+    localStorage.setItem('entrenador', entrenador);
+    localStorage.setItem('institucion', institucion);
+    
     let deportistaNuevo = new Deportista(nombre, apellido, dni, edad, deporte, entrenador, institucion, preWellness, postWellness);
     deportistas.push(deportistaNuevo);
 
     return deportistaNuevo; 
 };
 
-/* console.log(deportistas); */
 
 const btnDeportista = document.querySelector(".btn-deportista");
 btnDeportista.onclick = () => {

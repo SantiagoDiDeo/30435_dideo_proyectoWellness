@@ -77,8 +77,8 @@
     
     &__buttons {
         display: flex;
-        flex-direction: column;
         padding: 1rem;
+        justify-content: center;
     }
     
     &__button {
@@ -88,7 +88,6 @@
         margin: 1rem;
         width: 10rem;
         height: 4rem;
-        align-self: flex-start;
         align-items: center;
         justify-content: center;
         border: solid 0.12rem gray;

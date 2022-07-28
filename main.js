@@ -14,40 +14,36 @@ let entrenador;
 let institucion;
 
 const formularioDeportista = document.querySelector(".main__form1");
-const nombreDeportista = document.getElementById("nombre");
+const nombreDeportista = document.querySelector("#nombre");
 const apellidoDeportista = document.querySelector("#apellido");
 const dniDeportista = document.querySelector("#dni");
 const edadDeportista = document.querySelector("#edad");
 const deporteDeportista = document.querySelector("#deporte");
 const entrenadorDeportista = document.querySelector("#entrenador");
 const institucionDeportista = document.querySelector("#institucion");
+const botonSubmit = document.querySelector("#submit");
+const btnDeportista = document.querySelector(".btn-deportista");
 
 
 
+//formulario
 formularioDeportista.style.display = 'none';
 
-let nombreStorage = localStorage.getItem('nombre'); // valor || null
-let apellidoStorage = localStorage.getItem('apellido'); // valor || null
+
 
 
 // AGREGAR DEPORTISTA
-/* class Deportista {
-    constructor(nombre, apellido, dni, edad, deporte, entrenador, institucion, preWellness, postWellness){
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.dni = dni;
-    this.edad = edad;
-    this.deporte = deporte;
-    this.entrenador = entrenador;
-    this.institucion = institucion;
-    this.preWellness = preWellness;
-    this.postWellness = postWellness;
-    }
-};
- */
-
 const agregarDeportista = () => {
     formularioDeportista.style.display = 'block';
+};
+
+btnDeportista.onclick = () => {
+    agregarDeportista();
+}
+
+
+//localStorage
+const enviarForm = () => {
 
     nombre = nombreDeportista.value;
     apellido = apellidoDeportista.value;
@@ -57,8 +53,6 @@ const agregarDeportista = () => {
     entrenador = entrenadorDeportista.value;
     institucion = institucionDeportista.value;
 
-
-
     localStorage.setItem('nombre', nombre);
     localStorage.setItem('apellido', apellido);
     localStorage.setItem('dni', dni);
@@ -66,37 +60,13 @@ const agregarDeportista = () => {
     localStorage.setItem('deporte', deporte);
     localStorage.setItem('entrenador', entrenador);
     localStorage.setItem('institucion', institucion);
-    
-    /* let deportistaNuevo = new Deportista(nombre, apellido, dni, edad, deporte, entrenador, institucion, preWellness, postWellness);
-    deportistas.push(deportistaNuevo);
-
-    return deportistaNuevo;  */
-
-    
-};
-
-const verificarStorage = () => {
-    if (nombreStorage !== null && apellidoStorage !== null) {
-    nombre = nombreStorage;
-    apellido = apellidoStorage;
-    
-    } else {
-      // Listener
-    formularioUsuario.addEventListener('submit', (e) => {
-        e.preventDefault();
-        agregarDeportista();
-        nombreFormulario.value = '';
-        apellidoFormulario.value = '';
-    });
-    }
 }
 
-localStorage.setItem('deportistas', JSON.stringify(deportistas));
+botonSubmit.onclick = enviarForm();
 
-const btnDeportista = document.querySelector(".btn-deportista");
-btnDeportista.onclick = () => {
-    agregarDeportista();
-}
+
+
+
 
 
 

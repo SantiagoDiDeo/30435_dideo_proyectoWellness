@@ -1,6 +1,18 @@
 
+//formularioDeportista
 
 //variables
+const formularioDeportista = document.querySelector(".main__formDep");
+const nombreDeportista = document.querySelector("#nombre");
+const apellidoDeportista = document.querySelector("#apellido");
+const dniDeportista = document.querySelector("#dni");
+const edadDeportista = document.querySelector("#edad");
+const deporteDeportista = document.querySelector("#deporte");
+const entrenadorDeportista = document.querySelector("#entrenador");
+const institucionDeportista = document.querySelector("#institucion");
+const botonSubmit = document.querySelector("#submit");
+const btnDeportista = document.querySelector("#btn-deportista");
+const saludo = document.querySelector(".main__saludo");
 
 let deportistas = [];
 let preWellness = [];
@@ -13,34 +25,17 @@ let deporte;
 let entrenador;
 let institucion;
 
-const formularioDeportista = document.querySelector(".main__form1");
-const nombreDeportista = document.querySelector("#nombre");
-const apellidoDeportista = document.querySelector("#apellido");
-const dniDeportista = document.querySelector("#dni");
-const edadDeportista = document.querySelector("#edad");
-const deporteDeportista = document.querySelector("#deporte");
-const entrenadorDeportista = document.querySelector("#entrenador");
-const institucionDeportista = document.querySelector("#institucion");
-const botonSubmit = document.querySelector("#submit");
-const btnDeportista = document.querySelector(".btn-deportista");
-
-
-
 //formulario
 formularioDeportista.style.display = 'none';
 
-
-
-
 // AGREGAR DEPORTISTA
-const agregarDeportista = () => {
+const agregarDeportista = () => {   
     formularioDeportista.style.display = 'block';
 };
 
 btnDeportista.onclick = () => {
     agregarDeportista();
 }
-
 
 //localStorage
 const enviarForm = () => {
@@ -60,18 +55,94 @@ const enviarForm = () => {
     localStorage.setItem('deporte', deporte);
     localStorage.setItem('entrenador', entrenador);
     localStorage.setItem('institucion', institucion);
+
 }
 
-botonSubmit.onclick = enviarForm();
+//bienvenida
+const saludoInicial = () => {
+    saludo.innerHTML = `Bienvenid@ ${nombre}, ya podes iniciar el test Pre Training Wellness`;
+    formularioDeportista.style.display = 'none';
+}
+
+
+//listener
+formularioDeportista.addEventListener('submit', (e) => {
+    e.preventDefault();
+    enviarForm();
+    saludoInicial();
+});
 
 
 
 
 
 
+/* FORMULARIO PREWELLNESS */
 
-/* FORMULARIO WELLNESS */
-class PreWellness {
+//variables
+const btnPreWellness = document.querySelector("#btn-preWellness");
+const formularioPreWellness = document.querySelector('.main__formPre');
+const cantidadPre = document.querySelector('#cantidad');
+const calidadPre = document.querySelector('#calidad');
+const animicoPre = document.querySelector('#animico');
+const estresPre = document.querySelector('#estres');
+const cansancioPre = document.querySelector('#cansancio');
+const fatigaPre = document.querySelector('#fatiga');
+const lesionesPre = document.querySelector('#lesiones');
+const submitPre = document.querySelector('#submitPre');
+
+let cantidad;
+let calidad;
+let animico;
+let estres;
+let cansancio;
+let fatiga;
+let lesiones;
+
+
+//formulario
+formularioPreWellness.style.display = "none";
+
+const crearPreWellness = () =>{
+    formularioPreWellness.style.display = "block";
+}
+
+btnPreWellness.onclick = () => {
+    crearPreWellness();
+}
+
+//localStorage
+const enviarFormPre = () => {
+    cantidad = cantidadPre.value;
+    calidad = calidadPre.value;
+    animico = animicoPre.value;
+    estres = estresPre.value;
+    cansancio = cansancioPre.value;
+    fatiga = fatigaPre.value;
+    lesiones = lesionesPre.value;
+
+    localStorage.setItem('cantidad', cantidad);
+    localStorage.setItem('calidad', calidad);
+    localStorage.setItem('animico', animico);
+    localStorage.setItem('estres', estres);
+    localStorage.setItem('cansancio', cansancio);
+    localStorage.setItem('fatiga', fatiga);
+    localStorage.setItem('lesiones', lesiones);
+
+}
+
+//listener
+formularioPreWellness.addEventListener('submit', (e) =>{
+    e.preventDefault();
+    formularioPreWellness.style.display = 'none';
+    enviarFormPre();
+    
+    }
+);
+
+
+
+/* class PreWellness {
     constructor(cantidadSueno, calidadSueno, animico, estres, cansancio, fatiga, lesiones){
         this.cantidadSueno = cantidadSueno;
         this.calidadSueno = calidadSueno;
@@ -82,11 +153,9 @@ class PreWellness {
         this.lesiones = lesiones;
         
     }
-};
+}; */
 
-
-
-const llenarFormulario1 = () => {
+/* const llenarFormulario1 = () => {
     let cantidadSueno = parseFloat(prompt("Ingrese la cantidad de horas de sueño (hh:mm)."))
     let calidadSueno = parseInt(prompt("Ingrese su calidad de sueño del 1 al 10."));
     let animico = parseInt(prompt("Como se encuentra animicamente/de humor del 1 al 10?"));
@@ -118,14 +187,66 @@ const llenarFormulario1 = () => {
             preWellness.push(fatiga);
             }    
 
-}
+} */
 
-let btnPreWellness = document.querySelector(".btn-prewellness");
+/* let btnPreWellness = document.querySelector(".btn-prewellness");
 btnPreWellness.onclick = () => {
     llenarFormulario1();
-};
+}; */
 
-class PostWellness {
+
+//postwellness
+
+const btnPostWellness = document.querySelector("#btn-postWellness");
+const formularioPostWellness = document.querySelector('.main__formPost');
+const exigenciaPost = document.querySelector('#exigencia');
+const cansancioPost = document.querySelector('#cansancioP');
+const fatigaPost = document.querySelector('#fatigaP');
+const lesionesPost = document.querySelector('#lesionesP');
+const submitPost = document.querySelector('#submitPost');
+
+let exigencia;
+let cansancioP;
+let fatigaP;
+let lesionesP;
+
+
+//formulario
+formularioPostWellness.style.display = "none";
+
+const crearPostWellness = () =>{
+    formularioPostWellness.style.display = "block";
+}
+
+btnPostWellness.onclick = () => {
+    crearPostWellness();
+}
+
+//localStorage
+const enviarFormPost = () => {
+    exigencia = exigenciaPost.value;
+    cansancioP = cansancioPost.value;
+    fatigaP = fatigaPost.value;
+    lesionesP = lesionesPost.value;
+
+    localStorage.setItem('exigencia', exigencia);
+    localStorage.setItem('cansancio', cansancioP);
+    localStorage.setItem('fatiga', fatigaP);
+    localStorage.setItem('lesiones', lesionesP);
+    
+
+}
+
+//listener
+formularioPostWellness.addEventListener('submit', (e) =>{
+    e.preventDefault();
+    formularioPostWellness.style.display = 'none';
+    enviarFormPost();
+    
+    }
+);
+
+/* class PostWellness {
     constructor(exigencia, cansancio, fatiga, lesiones) {
         this.exigencia = exigencia;
         this.cansancio = cansancio;
@@ -136,10 +257,9 @@ class PostWellness {
 }
 
 
-
 const llenarFormulario2 = () => {
     let exigencia = parseInt(prompt("Ingrese el nivel de exigencia percibido en su entrenamiento del 1 al 10."));
-    let cansancio = parseInt(prompt("Ingrese el nivel de cansancio post entrenamiento del 1 al 10."));
+    let cansancio = parseInt(prompt("    del 1 al 10."));
     let fatiga = prompt("Tiene fatiga o dolor muscular? Responda por 'si' o 'no'.");
     let lesiones = prompt("Tiene alguna lesion? Responda por 'si' o 'no'.");
 
@@ -170,10 +290,10 @@ const llenarFormulario2 = () => {
 let btnPostWellness = document.querySelector(".btn-postwellness");
 btnPostWellness.onclick = () => {
     llenarFormulario2();
-};
+}; */
 
 /* ESTADISTICAS */
-
+/* 
 const estadisticas = () => {
     let estadistica = prompt("Escriba el nombre del deportista");
     deportistas.forEach(deportistas => {
@@ -188,7 +308,7 @@ btnEstadisticas.onclick = () => {
 };
 
 
-
+ */
 
 
 

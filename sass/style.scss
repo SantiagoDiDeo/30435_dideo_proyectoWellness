@@ -100,5 +100,14 @@
     &__form1 {
         display: flex;
     }
-}
 
+    &__form2 {
+        display: flex;
+        flex-direction: column;
+        
+    }
+    
+    &__datos {
+        width: 15rem;
+    }
+}

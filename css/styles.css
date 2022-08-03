@@ -85,7 +85,15 @@
     height: 25rem;
     background-color: #424242;
     text-align: center;
-    color: white; }
+    color: white;
+    border-radius: 4%; }
+  .main__submit {
+    padding: 0.4rem;
+    margin: 0.5rem;
+    width: 8rem;
+    border-radius: 0.5rem;
+    border: solid 0.12rem gray;
+    font-size: 1rem; }
   .main__datos {
     width: 18rem; }
   .main__label {

@@ -39,6 +39,21 @@ btnDeportista.onclick = () => {
     agregarDeportista();
 }
 
+//objeto
+class Deportista {
+    constructor(nombreDep, apellidoDep, dniDep, edadDep, deporteDep,entrenadorDep, institucionDep, preWellness, postWellness) {
+        this.nombreDep = nombreDep;
+        this.apellidoDep = apellidoDep;
+        this.dniDep = dniDep;
+        this.edadDep = edadDep;
+        this.deporteDep = deporteDep;
+        this.entrenadorDep = entrenadorDep;
+        this.institucionDep = institucionDep;
+        this.preWellness = preWellness;
+        this.postWellness = postWellness;
+    }
+}
+
 //localStorage
 const enviarForm = () => {
 
@@ -50,13 +65,10 @@ const enviarForm = () => {
     entrenador = entrenadorDeportista.value;
     institucion = institucionDeportista.value;
 
-    localStorage.setItem('nombre', nombre);
-    localStorage.setItem('apellido', apellido);
-    localStorage.setItem('dni', dni);
-    localStorage.setItem('edad', edad);
-    localStorage.setItem('deporte', deporte);
-    localStorage.setItem('entrenador', entrenador);
-    localStorage.setItem('institucion', institucion);
+    let nuevoDeportista = new Deportista(nombre, apellido, dni, edad, deporte, entrenador, institucion)
+    deportistas.push(nuevoDeportista);
+
+    localStorage.setItem('deportistas', JSON.stringify(deportistas));
 
 }
 
@@ -69,7 +81,6 @@ const saludoInicial = () => {
 
 //listener
 formularioDeportista.addEventListener('submit', (e) => {
-    e.preventDefault();
     enviarForm();
     saludoInicial();
 });
@@ -118,6 +129,21 @@ btnPreWellness.onclick = () => {
     saludo.style.display = 'none';
 }
 
+//objeto
+class PreWellness {
+    constructor(dniPre, cantidadPre, calidadPre, animicoPre, estresPre, cansancioPre, fatigaPre, lesionesPre){
+        this.dniPre = dniPre;
+        this.cantidadPre = cantidadPre;
+        this.calidadPre = calidadPre;
+        this.animicoPre = animicoPre;
+        this.estresPre = estresPre;
+        this.cansancioPre = cansancioPre;
+        this.fatigaPre = fatigaPre;
+        this.lesionesPre = lesionesPre;
+    }
+};
+
+
 //localStorage
 const enviarFormPre = () => {
     dniP = dniPre.value;
@@ -129,13 +155,48 @@ const enviarFormPre = () => {
     fatiga = fatigaPre.value;
     lesiones = lesionesPre.value;
 
-    localStorage.setItem('cantidad', cantidad);
-    localStorage.setItem('calidad', calidad);
-    localStorage.setItem('animico', animico);
-    localStorage.setItem('estres', estres);
-    localStorage.setItem('cansancio', cansancio);
-    localStorage.setItem('fatiga', fatiga);
-    localStorage.setItem('lesiones', lesiones);
+    switch(lesiones) {
+        case "si":
+        case "SI":
+        case "Si":
+            lesiones = true;
+            break;
+        
+        case "no":
+        case "No":
+        case "NO":
+            lesiones = false;
+            break;
+
+        default:
+            alert("Su respuesta no es correcta. Complete con 'si' o 'no'.");
+            formularioPreWellness.style.display = "flex";
+            break;
+        } 
+
+        switch(fatiga) {
+            case "si":
+            case "SI":
+            case "Si":
+                fatiga = true;
+                break;
+            
+            case "no":
+            case "No":
+            case "NO":
+                fatiga = false;
+                break;
+    
+            default:
+                alert("Su respuesta no es correcta. Complete con 'si' o 'no'.");
+                formularioPreWellness.style.display = "flex";
+                break;
+            } 
+    let nuevoPreWellness = new PreWellness(dniP, cantidad, calidad, animico, estres, cansancio, fatiga, lesiones);
+    preWellness.push(nuevoPreWellness);
+
+    localStorage.setItem('prewellness', JSON.stringify(preWellness));
+
 
 }
 
@@ -149,59 +210,9 @@ formularioPreWellness.addEventListener('submit', (e) =>{
 );
 
 
-
-/* class PreWellness {
-    constructor(cantidadSueno, calidadSueno, animico, estres, cansancio, fatiga, lesiones){
-        this.cantidadSueno = cantidadSueno;
-        this.calidadSueno = calidadSueno;
-        this.animico = animico;
-        this.estres = estres;
-        this.cansancio = cansancio;
-        this.fatiga = fatiga;
-        this.lesiones = lesiones;
-        
-    }
-}; */
-
-/* const llenarFormulario1 = () => {
-    let cantidadSueno = parseFloat(prompt("Ingrese la cantidad de horas de sueño (hh:mm)."))
-    let calidadSueno = parseInt(prompt("Ingrese su calidad de sueño del 1 al 10."));
-    let animico = parseInt(prompt("Como se encuentra animicamente/de humor del 1 al 10?"));
-    let estres = parseInt(prompt("Que tan estresado se siente del 1 al 10?"));
-    let cansancio = parseInt(prompt("Ingrese su nivel de cansancio general del 1 al 10."))
-    let fatiga = prompt("Tiene fatiga o dolor muscular? Responda por 'si' o 'no'.");
-    let lesiones = prompt("Tiene alguna lesion? Responda por 'si' o 'no'.");
-
-    let formNuevo = new PreWellness(cantidadSueno, calidadSueno, animico, estres, cansancio, fatiga,   lesiones);
-    preWellness.push(formNuevo);
-
-    if (lesiones === "si") {
-        lesiones = true;
-        } else if(lesiones === "no") {
-            lesiones = false;
-            } else {
-        alert("su respuesta es incorrecta. Ingrese 'si' o 'no'");
-        lesiones = prompt("Tiene alguna lesion? Responda por 'si' o 'no'.");
-        preWellness.push(lesiones);
-        }
-
-        if (fatiga === "si") {
-            fatiga = true;
-            } else if(fatiga === "no") {
-                fatiga = false;
-                } else {
-            alert("su respuesta es incorrecta. Ingrese 'si' o 'no'");
-            fatiga = prompt("Tiene alguna lesion? Responda por 'si' o 'no'.");
-            preWellness.push(fatiga);
-            }    
-
-} */
-
-
-
 //FORMULARIO POST WELLNESS
 
-
+//variables
 const btnPostWellness = document.querySelector("#btn-postWellness");
 const formularioPostWellness = document.querySelector('.main__formPost');
 const dniPost = document.querySelector('#dniPost');
@@ -232,6 +243,18 @@ btnPostWellness.onclick = () => {
     saludo.style.display = 'none';
 }
 
+//objeto
+class PostWellness {
+    constructor(dniPost, exigenciaPost, cansancioPost, fatigaPost, lesionesPost) {
+        this.dniPost = dniPost;
+        this.exigenciaPost = exigenciaPost;
+        this.cansancioPost = cansancioPost;
+        this.fatigaPost = fatigaPost;
+        this.lesionesPost = lesionesPost;
+    }
+}
+
+
 //localStorage
 const enviarFormPost = () => {
     dniPo = dniPost.value;
@@ -240,11 +263,58 @@ const enviarFormPost = () => {
     fatigaP = fatigaPost.value;
     lesionesP = lesionesPost.value;
 
-    localStorage.setItem('exigenciaPost', exigenciaP);
-    localStorage.setItem('cansancioPost', cansancioP);
-    localStorage.setItem('fatigaPost', fatigaP);
-    localStorage.setItem('lesionesPost', lesionesP);
+    switch(lesionesP) {
+        case "si":
+        case "SI":
+        case "Si":
+            lesiones = true;
+            break;
+        
+        case "no":
+        case "No":
+        case "NO":
+            lesiones = false;
+            break;
+
+        default:
+            alert("Su respuesta no es correcta. Complete con 'si' o 'no'.");
+            formularioPostWellness.style.display = "flex";
+            break;
+        } 
+
+        switch(fatigaP) {
+            case "si":
+            case "SI":
+            case "Si":
+                fatiga = true;
+                break;
+            
+            case "no":
+            case "No":
+            case "NO":
+                fatiga = false;
+                break;
     
+            default:
+                alert("Su respuesta no es correcta. Complete con 'si' o 'no'.");
+                formularioPostWellness.style.display = "flex";
+                break;
+            } 
+
+        
+        /* if(dniPo === deportistas.dniDep){
+            let nuevoPostWellness = new PostWellness(dniPo, exigenciaP, cansancioP, fatigaP, lesionesP);
+    deportistas[Deportista.dniDep].push(nuevoPostWellness)
+
+    localStorage.setItem('postwellness', JSON.stringify(postWellness));
+        } else {
+            alert("no funciona");
+        } */
+
+        let nuevoPostWellness = new PostWellness(dniPo, exigenciaP, cansancioP, fatigaP, lesionesP);
+        postWellness.push(nuevoPostWellness)
+    
+        localStorage.setItem('postwellness', JSON.stringify(postWellness));
 
 }
 
@@ -258,55 +328,6 @@ formularioPostWellness.addEventListener('submit', (e) =>{
 );
 
 
-/* formularioPreWellness.addEventListener('click', ()=>{
-    formularioPreWellness.style.display = 'none';
-    formularioPostWellness.style.display = 'none';
-})  */
-/* class PostWellness {
-    constructor(exigencia, cansancio, fatiga, lesiones) {
-        this.exigencia = exigencia;
-        this.cansancio = cansancio;
-        this.fatiga = fatiga;
-        this.lesiones = lesiones;
-    }
-
-}
-
-
-const llenarFormulario2 = () => {
-    let exigencia = parseInt(prompt("Ingrese el nivel de exigencia percibido en su entrenamiento del 1 al 10."));
-    let cansancio = parseInt(prompt("    del 1 al 10."));
-    let fatiga = prompt("Tiene fatiga o dolor muscular? Responda por 'si' o 'no'.");
-    let lesiones = prompt("Tiene alguna lesion? Responda por 'si' o 'no'.");
-
-    let formNuevo1 = new PostWellness(exigencia, cansancio, fatiga, lesiones);
-    postWellness.push(formNuevo1);
-
-    if (lesiones === "si") {
-        lesiones = true;
-        } else if(lesiones === "no") {
-            lesiones = false;
-            } else {
-        alert("su respuesta es incorrecta. Ingrese 'si' o 'no'");
-        lesiones = prompt("Tiene alguna lesion? Responda por 'si' o 'no'.");
-        postWellness.push(lesiones);
-        }
-
-        if (fatiga === "si") {
-            fatiga = true;
-            } else if(fatiga === "no") {
-                fatiga = false;
-                } else {
-            alert("su respuesta es incorrecta. Ingrese 'si' o 'no'");
-            fatiga = prompt("Tiene alguna lesion? Responda por 'si' o 'no'.");
-            postWellness.push(fatiga);
-            }    
-}
-
-let btnPostWellness = document.querySelector(".btn-postwellness");
-btnPostWellness.onclick = () => {
-    llenarFormulario2();
-}; */
 
 /* ESTADISTICAS */
 /* 
@@ -322,6 +343,7 @@ let btnEstadisticas = document.querySelector(".btn-estadisticas");
 btnEstadisticas.onclick = () => {
     estadisticas();
 };
+
 
 
  */

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,91 +8,132 @@
     <link rel="stylesheet" href="./css/styles.css">
     <title>Wellness</title>
 </head>
+
 <body class="body">
     <header class="header">
         <div class="header__all">
-        <a class="header__logo" href="index.html">
-            <img class="header__logo--img" src="./Recursos/logo1.png" alt="logo">
-        </a>
-        <div class="header__title">
-            <h1 class="header__h1">Formulario Wellness</h1>
-            <h2 class="header__h2">(Persepción subjetiva del esfuerzo)</h2>
-            
+            <a class="header__logo" href="index.html">
+                <img class="header__logo--img" src="./Recursos/logo1.png" alt="logo">
+            </a>
+            <div class="header__title">
+                <h1 class="header__h1">Formulario Wellness</h1>
+                <h2 class="header__h2">(Persepción subjetiva del esfuerzo)</h2>
+
+            </div>
         </div>
-    </div>
     </header>
     <main class="main">
-        
+        <!-- botones -->
         <div class="main__buttons">
             <button type="button" id="btn-deportista" class="main__button">Agregar deportista</button>
             <button type="button" id="btn-preWellness" class="main__button">Pre Training Wellness</button>
             <button type="button" id="btn-postWellness" class="main__button">Post Training Wellness</button>
             <button type="button" class="main__button btn-estadisticas">Ver estadisticas</button>
         </div>
+        <!-- formulario deportista -->
+        <div class="main__divForm">
+            <form class="main__formDep main__form">
 
-        <form class="main__formDep  ">
-            <input type="text" id="nombre" placeholder="nombre">
-            <input type="text" id="apellido" placeholder="apellido">
-            <input type="text" id="dni" placeholder="dni">
-            <input type="text" id="edad" placeholder="edad">
-            <input type="text" id="deporte" placeholder="deporte">
-            <input type="text" id="entrenador" placeholder="entrenador">
-            <input type="text" id="institucion" placeholder="institucion">
-            <button type="submit" id="submit">Enviar</button>
-        </form>
-        <form class="main__formPre">
-            <div class="main__datos">
-                <label for="cantidad" class="form1__label">Ingrese la cantidad de horas de sueño.</label>
-                <input type="text" id="cantidad" placeholder="Del 1 al 10">
-            </div>
-            <div class="main__datos">
-                <label for="calidad" class="form1__label">Ingrese la calidad de sueño.</label>
-                <input type="text" id="calidad" placeholder="Del 1 al 10">
-            </div>
-            <div class="main__datos">    
-                <label for="animico" class="form1__label">¿Como se encuentra animicamente/de humor?</label>
-                <input type="text" id="animico" placeholder="Del 1 al 10">
-            </div>
-            <div class="main__datos">
-                <label for="estres" class="form1__label">¿Que tan estresado te sentis?</label>
-                <input type="text" id="estres" placeholder="Del 1 al 10">
-            </div>
-            <div class="main__datos">
-                <label for="cansancio" class="form1__label">Ingrese su nivel de cansancio general.</label>
-                <input type="text" id="cansancio" placeholder="Del 1 al 10">
-            </div>
-            <div class="main__datos">
-                <label for="fatiga" class="form1__label">¿Tiene fatiga muscular?</label>
-                <input type="text" id="fatiga" placeholder="Conteste por 'si' o por 'no'.">
-            </div>
-            <div class="main__datos">
-                <label for="lesiones" class="form1__label">¿Tiene alguna lesion?</label>
-                <input type="text" id="lesiones" placeholder="Conteste por 'si' o por 'no'.">
-            </div>
+                <label for="nombre" class="main__label">Ingrese su nombre.</label>
+                <input type="text" class="main__input" id="nombre" placeholder="nombre">
+
+
+                <label for="apellido" class="main__label">Ingrese su apellido.</label>
+                <input type="text" class="main__input" id="apellido" placeholder="apellido">
+
+
+                <label for="dni" class="main__label">Ingrese su DNI.</label>
+                <input type="text" class="main__input" id="dni" placeholder="dni">
+
+
+                <label for="edad" class="main__label">Ingrese su edad.</label>
+                <input type="text" class="main__input" id="edad" placeholder="edad">
+
+
+                <label for="deporte" class="main__label">Ingrese su deporte.</label>
+                <input type="text" class="main__input" id="deporte" placeholder="deporte">
+
+
+                <label for="entrenador" class="main__label">Ingrese el nombre de su entrenador.</label>
+                <input type="text" class="main__input" id="entrenador" placeholder="entrenador">
+
+
+                <label for="isntitucion" class="main__label">Ingrese el nombre de su institucion.</label>
+                <input type="text" class="main__input" id="institucion" placeholder="institucion">
+
+                <button type="submit" id="submit">Enviar</button>
+            </form>
+        </div>
+        <!-- formulario prewellness -->
+        <div class="main__divForm">
+            <form class="main__formPre main__form">
+                <div class="main__datos">
+                    <label for="dniPre" class="main__label">Ingrese su DNI.</label>
+                    <input type="number" class="main__input" id="dniPre" placeholder="Sin puntos ni espacios.">
+                </div>
+                <div class="main__datos">
+                    <label for="cantidad" class="main__label">Ingrese la cantidad de horas de sueño.</label>
+                    <input type="number" class="main__input" id="cantidad" placeholder="Del 1 al 10">
+                </div>
+                <div class="main__datos">
+                    <label for="calidad" class="main__label">Ingrese la calidad de sueño.</label>
+                    <input type="number" class="main__input" id="calidad" placeholder="Del 1 al 10">
+                </div>
+                <div class="main__datos">
+                    <label for="animico" class="main__label">¿Como se encuentra animicamente/de humor?</label>
+                    <input type="number" class="main__input" id="animico" placeholder="Del 1 al 10">
+                </div>
+                <div class="main__datos">
+                    <label for="estres" class="main__label">¿Que tan estresado te sentis?</label>
+                    <input type="number" class="main__input" id="estres" placeholder="Del 1 al 10">
+                </div>
+                <div class="main__datos">
+                    <label for="cansancio" class="main__label">Ingrese su nivel de cansancio general.</label>
+                    <input type="number" class="main__input" id="cansancio" placeholder="Del 1 al 10">
+                </div>
+                <div class="main__datos">
+                    <label for="fatiga" class="main__label">¿Tiene fatiga muscular?</label>
+                    <input type="text" class="main__input" id="fatiga" placeholder="Conteste por 'si' o por 'no'.">
+                </div>
+                <div class="main__datos">
+                    <label for="lesiones" class="main__label">¿Tiene alguna lesion?</label>
+                    <input type="text" class="main__input" id="lesiones" placeholder="Conteste por 'si' o por 'no'.">
+                </div>
                 <button type="submit" id="submitPre">Enviar</button>
-        </form>
-        <form class="main__formPost">
-            <div class="main__datos">
-                <label for="exigencia" class="form1__label" >Ingrese el nivel de exigencia percibido en su entrenamiento.</label>
-                <input type="text" id="exigencia" placeholder="Del 1 al 10">
-            </div>
-            <div class="main__datos">
-                <label for="cansancioP" class="form1__label">Ingrese el nivel de cansancio post entrenamiento.</label>
-                <input type="text" id="cansancioP" placeholder="Del 1 al 10">
-            </div>
-            <div class="main__datos">
-                <label for="fatigaP" class="form1__label">¿Tiene fatiga o dolor muscular?</label>
-                <input type="text" id="fatigaP" placeholder="Responda por 'si' o 'no'.">
-            </div>
-            <div class="main__datos">
-                <label for="lesionesP" class="form1__label">¿Tiene alguna lesion?</label>
-                <input type="text" id="lesionesP" placeholder="Responda por 'si' o 'no'.">
-            </div>
-            <button type="submit" id="submitPost">Enviar</button>
-        </form>
+            </form>
+        </div>
+        <!-- formulario postwellness -->
+        <div class="main__divForm">
+            <form class="main__formPost main__form">
+                <div class="main__datos">
+                    <label for="dniPost" class="main__label">Ingrese su DNI.</label>
+                    <input type="number" class="main__input" id="dniPost" placeholder="Sin puntos ni espacios.">
+                </div>
+                <div class="main__datos">
+                    <label for="exigencia" class="main__label">Ingrese el nivel de exigencia percibido en su
+                        entrenamiento.</label>
+                    <input type="number" class="main__input" id="exigencia" placeholder="Del 1 al 10">
+                </div>
+                <div class="main__datos">
+                    <label for="cansancioP" class="main__label">Ingrese el nivel de cansancio post
+                        entrenamiento.</label>
+                    <input type="number" class="main__input" id="cansancioP" placeholder="Del 1 al 10">
+                </div>
+                <div class="main__datos">
+                    <label for="fatigaP" class="main__label">¿Tiene fatiga o dolor muscular?</label>
+                    <input type="text" class="main__input" id="fatigaP" placeholder="Responda por 'si' o 'no'.">
+                </div>
+                <div class="main__datos">
+                    <label for="lesionesP" class="main__label">¿Tiene alguna lesion?</label>
+                    <input type="text" class="main__input" id="lesionesP" placeholder="Responda por 'si' o 'no'.">
+                </div>
+                <button type="submit" id="submitPost">Enviar</button>
+            </form>
+        </div>
         <p class="main__saludo"></p>
     </main>
     <!-- <footer></footer> -->
     <script src="main.js"></script>
 </body>
+
 </html>

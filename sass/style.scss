@@ -7,7 +7,7 @@
 .body {
     max-width: 100vw;
     max-height: 100vh;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .header {
@@ -97,17 +97,40 @@
         font-weight: lighter;
     }
 
-    &__form1 {
-        display: flex;
-    }
 
-    &__form2 {
+    &__divForm {
+        display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    &__form {
         display: flex;
         flex-direction: column;
-        
+        justify-content: center;
+        align-items: center;
+        width: 24rem;
+        height: 25rem;
+        background-color: #424242;
+        text-align: center;
+        color: white;
     }
     
+
     &__datos {
-        width: 15rem;
+        width: 18rem;
+    }
+
+    &__label {
+        flex-direction: column;
+        margin: 0.2rem;
+    
+    }
+
+    &__input {
+        flex-direction: column;
+        width: 14rem;
+        margin: 0.1rem;
     }
 }
+

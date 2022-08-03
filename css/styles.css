@@ -6,7 +6,7 @@
 .body {
   max-width: 100vw;
   max-height: 100vh;
-  overflow: hidden; }
+  overflow: auto; }
 
 .header {
   display: flex;
@@ -72,10 +72,26 @@
     font-size: 1.2rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: lighter; }
-  .main__form1 {
-    display: flex; }
-  .main__form2 {
+  .main__divForm {
     display: flex;
-    flex-direction: column; }
+    align-items: center;
+    justify-content: center; }
+  .main__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 24rem;
+    height: 25rem;
+    background-color: #424242;
+    text-align: center;
+    color: white; }
   .main__datos {
-    width: 15rem; }
+    width: 18rem; }
+  .main__label {
+    flex-direction: column;
+    margin: 0.2rem; }
+  .main__input {
+    flex-direction: column;
+    width: 14rem;
+    margin: 0.1rem; }

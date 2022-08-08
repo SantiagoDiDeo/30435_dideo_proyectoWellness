@@ -152,51 +152,18 @@ const enviarFormPre = () => {
     animico = animicoPre.value;
     estres = estresPre.value;
     cansancio = cansancioPre.value;
-    fatiga = fatigaPre.value;
-    lesiones = lesionesPre.value;
+    fatiga = fatigaPre.value == 'si'  ? true :
+                fatigaPre.value == 'no' ? false :
+                alert("Valor incorrecto. Ingrese 'si' o 'no'");
+    lesiones = lesionesPre.value == 'si' ? true :
+                lesionesPre.value =='no' ? false :
+                (alert("Valor incorrecto. Ingrese 'si' o 'no'"));
 
-    switch(lesiones) {
-        case "si":
-        case "SI":
-        case "Si":
-            lesiones = true;
-            break;
-        
-        case "no":
-        case "No":
-        case "NO":
-            lesiones = false;
-            break;
 
-        default:
-            alert("Su respuesta no es correcta. Complete con 'si' o 'no'.");
-            formularioPreWellness.style.display = "flex";
-            break;
-        } 
-
-        switch(fatiga) {
-            case "si":
-            case "SI":
-            case "Si":
-                fatiga = true;
-                break;
-            
-            case "no":
-            case "No":
-            case "NO":
-                fatiga = false;
-                break;
-    
-            default:
-                alert("Su respuesta no es correcta. Complete con 'si' o 'no'.");
-                formularioPreWellness.style.display = "flex";
-                break;
-            } 
     let nuevoPreWellness = new PreWellness(dniP, cantidad, calidad, animico, estres, cansancio, fatiga, lesiones);
     preWellness.push(nuevoPreWellness);
 
     localStorage.setItem('prewellness', JSON.stringify(preWellness));
-
 
 }
 
@@ -260,61 +227,23 @@ const enviarFormPost = () => {
     dniPo = dniPost.value;
     exigenciaP = exigenciaPost.value;
     cansancioP = cansancioPost.value;
-    fatigaP = fatigaPost.value;
-    lesionesP = lesionesPost.value;
+    fatigaP = fatigaPost.value == 'si'  ? true :
+                fatigaPost.value == 'no' ? false :
+                alert("Valor incorrecto. Ingrese 'si' o 'no'");
+    lesionesP = lesionesPost.value == 'si' ? true :
+                lesionesPost.value =='no' ? false :
+                (alert("Valor incorrecto. Ingrese 'si' o 'no'"));
 
-    switch(lesionesP) {
-        case "si":
-        case "SI":
-        case "Si":
-            lesiones = true;
-            break;
-        
-        case "no":
-        case "No":
-        case "NO":
-            lesiones = false;
-            break;
 
-        default:
-            alert("Su respuesta no es correcta. Complete con 'si' o 'no'.");
-            formularioPostWellness.style.display = "flex";
-            break;
-        } 
-
-        switch(fatigaP) {
-            case "si":
-            case "SI":
-            case "Si":
-                fatiga = true;
-                break;
-            
-            case "no":
-            case "No":
-            case "NO":
-                fatiga = false;
-                break;
-    
-            default:
-                alert("Su respuesta no es correcta. Complete con 'si' o 'no'.");
-                formularioPostWellness.style.display = "flex";
-                break;
-            } 
-
-        
-        /* if(dniPo === deportistas.dniDep){
-            let nuevoPostWellness = new PostWellness(dniPo, exigenciaP, cansancioP, fatigaP, lesionesP);
-    deportistas[Deportista.dniDep].push(nuevoPostWellness)
-
-    localStorage.setItem('postwellness', JSON.stringify(postWellness));
-        } else {
-            alert("no funciona");
-        } */
-
-        let nuevoPostWellness = new PostWellness(dniPo, exigenciaP, cansancioP, fatigaP, lesionesP);
+    let nuevoPostWellness = new PostWellness(dniPo, exigenciaP, cansancioP, fatigaP, lesionesP);
         postWellness.push(nuevoPostWellness)
     
         localStorage.setItem('postwellness', JSON.stringify(postWellness));
+
+
+        
+        
+        
 
 }
 
@@ -330,6 +259,7 @@ formularioPostWellness.addEventListener('submit', (e) =>{
 
 
 /* ESTADISTICAS */
+
 /* 
 const estadisticas = () => {
     let estadistica = prompt("Escriba el nombre del deportista");

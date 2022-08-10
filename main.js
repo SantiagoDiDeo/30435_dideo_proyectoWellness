@@ -67,6 +67,7 @@ const enviarForm = () => {
 
     let nuevoDeportista = new Deportista(nombre, apellido, dni, edad, deporte, entrenador, institucion)
     deportistas.push(nuevoDeportista);
+    
 
     localStorage.setItem('deportistas', JSON.stringify(deportistas));
 
@@ -74,15 +75,22 @@ const enviarForm = () => {
 
 //bienvenida
 const saludoInicial = () => {
-    saludo.innerHTML = `Bienvenid@ ${nombre}, ya podes iniciar el test Pre Training Wellness`;
-    formularioDeportista.style.display = 'none';
+    Swal.fire({/* 
+        position: 'center', */
+        icon: 'success',
+        title: 'Deportista agregado correctamente',
+        showConfirmButton: false,
+        timer: 3000
+        })
 }
 
 
 //listener
-formularioDeportista.addEventListener('submit', (e) => {
+formularioDeportista.addEventListener('submit', () => {
+    formularioDeportista.style.display = 'none';
     enviarForm();
     saludoInicial();
+    
 });
 
 
@@ -126,7 +134,6 @@ btnPreWellness.onclick = () => {
     crearPreWellness();
     formularioDeportista.style.display = 'none';
     formularioPostWellness.style.display = 'none';
-    saludo.style.display = 'none';
 }
 
 //objeto
@@ -154,10 +161,15 @@ const enviarFormPre = () => {
     cansancio = cansancioPre.value;
     fatiga = fatigaPre.value == 'si'  ? true :
                 fatigaPre.value == 'no' ? false :
-                alert("Valor incorrecto. Ingrese 'si' o 'no'");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor incorrecto',
+                    text: 'Responda por "si" o por "no"',
+                    
+                })
     lesiones = lesionesPre.value == 'si' ? true :
                 lesionesPre.value =='no' ? false :
-                (alert("Valor incorrecto. Ingrese 'si' o 'no'"));
+                (Swal.fire("Valor incorrecto. Ingrese 'si' o 'no'"));
 
 
     let nuevoPreWellness = new PreWellness(dniP, cantidad, calidad, animico, estres, cansancio, fatiga, lesiones);
@@ -207,7 +219,6 @@ btnPostWellness.onclick = () => {
     crearPostWellness();
     formularioPreWellness.style.display = 'none';
     formularioDeportista.style.display = 'none';
-    saludo.style.display = 'none';
 }
 
 //objeto

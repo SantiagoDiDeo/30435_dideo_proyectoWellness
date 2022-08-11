@@ -13,6 +13,7 @@ const institucionDeportista = document.querySelector("#institucion");
 const botonSubmit = document.querySelector("#submit");
 const btnDeportista = document.querySelector("#btn-deportista");
 const saludo = document.querySelector(".main__saludo");
+const estadisticaP = document.querySelector(".main__estadisticas");
 
 let deportistas = [];
 let preWellness = [];
@@ -75,12 +76,11 @@ const enviarForm = () => {
 
 //bienvenida
 const saludoInicial = () => {
-    Swal.fire({/* 
-        position: 'center', */
+    Swal.fire({
         icon: 'success',
         title: 'Deportista agregado correctamente',
         showConfirmButton: false,
-        timer: 3000
+        timer: 4000
         })
 }
 
@@ -90,7 +90,7 @@ formularioDeportista.addEventListener('submit', () => {
     formularioDeportista.style.display = 'none';
     enviarForm();
     saludoInicial();
-    
+    saludo.innerHTML = `Bienvenid@ ${nombre}, ya podes iniciar el test Pre Training Wellness`;
 });
 
 
@@ -134,6 +134,7 @@ btnPreWellness.onclick = () => {
     crearPreWellness();
     formularioDeportista.style.display = 'none';
     formularioPostWellness.style.display = 'none';
+    saludo.style.display = 'none';
 }
 
 //objeto
@@ -166,10 +167,15 @@ const enviarFormPre = () => {
                     title: 'Valor incorrecto',
                     text: 'Responda por "si" o por "no"',
                     
-                })
+                });
     lesiones = lesionesPre.value == 'si' ? true :
                 lesionesPre.value =='no' ? false :
-                (Swal.fire("Valor incorrecto. Ingrese 'si' o 'no'"));
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor incorrecto',
+                    text: 'Responda por "si" o por "no"',
+                    
+                });
 
 
     let nuevoPreWellness = new PreWellness(dniP, cantidad, calidad, animico, estres, cansancio, fatiga, lesiones);
@@ -240,10 +246,20 @@ const enviarFormPost = () => {
     cansancioP = cansancioPost.value;
     fatigaP = fatigaPost.value == 'si'  ? true :
                 fatigaPost.value == 'no' ? false :
-                alert("Valor incorrecto. Ingrese 'si' o 'no'");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor incorrecto',
+                    text: 'Responda por "si" o por "no"',
+                    
+                });
     lesionesP = lesionesPost.value == 'si' ? true :
                 lesionesPost.value =='no' ? false :
-                (alert("Valor incorrecto. Ingrese 'si' o 'no'"));
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor incorrecto',
+                    text: 'Responda por "si" o por "no"',
+                    
+                });
 
 
     let nuevoPostWellness = new PostWellness(dniPo, exigenciaP, cansancioP, fatigaP, lesionesP);
@@ -271,12 +287,18 @@ formularioPostWellness.addEventListener('submit', (e) =>{
 
 /* ESTADISTICAS */
 
-/* 
+
 const estadisticas = () => {
-    let estadistica = prompt("Escriba el nombre del deportista");
-    deportistas.forEach(deportistas => {
-        console.log(deportistas.preWellness);
-        console.log(deportistas.postWellness);
+    let estadistica = Swal.fire({
+        title: 'Buscar deportista:',
+        input: 'text',
+        showCancelButton: true,
+        confirmButtonText: 'Buscar',
+        showLoaderOnConfirm: true
+    });
+    deportistas.forEach(deportista => {
+        console.log(preWellness);
+        console.log(postWellness);
     })
 }
 
@@ -287,7 +309,7 @@ btnEstadisticas.onclick = () => {
 
 
 
- */
+
 
 
 

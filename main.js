@@ -291,36 +291,36 @@ formularioPostWellness.addEventListener('submit', (e) =>{
 
 //fetch
 
+const pruebaFetch1 = () =>{
+    fetch("https://jsonplaceholder.typicode.com/users")
+        .then(response => response.json())
+        .then(result =>{
+            result.forEach(dato => {
+                prueba.innerHTML +=
+                `
+                <div>
+                    <h3>${dato.name}</h3>
+                    <span>Nombre usuario: ${dato.username} - </span>
+                    <span>Email: ${dato.email} - </span>
+                    <span>Direccion: ${dato.address.street} - </span>
+                    <span>Numero: ${dato.address.suite} - </span>
+                    <span>Ciudad: ${dato.address.city} - </span>
+                    <span>Coordenadas: ${JSON.stringify(dato.address.geo)}</span>
+                </div>
+                `
+        }).catch(function(err) {
+            console.log('error')})
+        .finally(console.log("terminado"))
 
-
-const fetch = async() => {
-    try{
-    let response = await fetch("./json/datosprueba.json")
-    let res = await  res.json()
-    .then(result => {
-        result.forEach(dato => {
-            prueba.innerHTML +=
-            `
-            <div>
-                <span>${dato.nombre}</span>
-                <span>${dato.apellido}</span>
-                <span>${dato.dni}</span>
-                <span>${dato.edad}</span>
-                <span>${dato.deporte}</span>
-                <span>${dato.entrenador}</span>
-                <span>${dato.institucion}</span>
-            </div>
-            `
-        })
     })
-    
-} catch(error){console.log(error)}
-}
+
+};
+
 
 
 botonFetch.onclick = () => {
-    fetch();
-}
+    pruebaFetch1();
+};
 
 
 
@@ -345,14 +345,3 @@ let btnEstadisticas = document.querySelector(".btn-estadisticas");
 btnEstadisticas.onclick = () => {
     estadisticas();
 };
-
-
-
-
-
-
-
-
-
-
-

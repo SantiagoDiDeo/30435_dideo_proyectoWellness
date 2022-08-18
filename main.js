@@ -14,6 +14,8 @@ const botonSubmit = document.querySelector("#submit");
 const btnDeportista = document.querySelector("#btn-deportista");
 const saludo = document.querySelector(".main__saludo");
 const estadisticaP = document.querySelector(".main__estadisticas");
+const prueba = document.querySelector(".fetchPrueba");
+const botonFetch = document.querySelector(".fetch");
 
 let deportistas = [];
 let preWellness = [];
@@ -180,10 +182,13 @@ const enviarFormPre = () => {
 
     let nuevoPreWellness = new PreWellness(dniP, cantidad, calidad, animico, estres, cansancio, fatiga, lesiones);
     preWellness.push(nuevoPreWellness);
-
+    
     localStorage.setItem('prewellness', JSON.stringify(preWellness));
-
+    
 }
+
+const deportistaWellness = deportistas.concat(preWellness);
+localStorage.setItem('deportistaPre', JSON.stringify(deportistaWellness));
 
 //listener
 formularioPreWellness.addEventListener('submit', (e) =>{
@@ -193,6 +198,7 @@ formularioPreWellness.addEventListener('submit', (e) =>{
     
     }
 );
+
 
 
 //FORMULARIO POST WELLNESS
@@ -282,6 +288,39 @@ formularioPostWellness.addEventListener('submit', (e) =>{
     
     }
 );
+
+//fetch
+
+
+
+const fetch = async() => {
+    try{
+    let response = await fetch("./json/datosprueba.json")
+    let res = await  res.json()
+    .then(result => {
+        result.forEach(dato => {
+            prueba.innerHTML +=
+            `
+            <div>
+                <span>${dato.nombre}</span>
+                <span>${dato.apellido}</span>
+                <span>${dato.dni}</span>
+                <span>${dato.edad}</span>
+                <span>${dato.deporte}</span>
+                <span>${dato.entrenador}</span>
+                <span>${dato.institucion}</span>
+            </div>
+            `
+        })
+    })
+    
+} catch(error){console.log(error)}
+}
+
+
+botonFetch.onclick = () => {
+    fetch();
+}
 
 
 

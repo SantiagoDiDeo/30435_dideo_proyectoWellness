@@ -6,6 +6,9 @@
     "edad": "24",
     "deporte": "Tenis",
     "entrenador": "Mauricio Perez",
-    "institucion": "Club Estrella"
+    "institucion": "Club Estrella",
+    "prewellness": [],
+    "postwellness": []
     }
 ]
+

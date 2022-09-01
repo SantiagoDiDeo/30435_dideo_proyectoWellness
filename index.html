@@ -18,8 +18,8 @@
             <div class="header__title">
                 <h1 class="header__h1">Formulario Wellness</h1>
                 <h2 class="header__h2">(Persepción subjetiva del esfuerzo)</h2>
-
             </div>
+            <button type="button" class="header__darkModeButton">Modo oscuro/claro</button>
         </div>
     </header>
     <main class="main">
@@ -36,31 +36,31 @@
             <form class="main__formDep main__form">
 
                 <label for="nombre" class="main__label">Ingrese su nombre.</label>
-                <input type="text" class="main__input" id="nombre" placeholder="nombre">
+                <input type="text" class="main__input" id="nombre" placeholder="nombre" name="nombre">
 
 
                 <label for="apellido" class="main__label">Ingrese su apellido.</label>
-                <input type="text" class="main__input" id="apellido" placeholder="apellido">
+                <input type="text" class="main__input" id="apellido" placeholder="apellido" name="apellido">
 
 
                 <label for="dni" class="main__label">Ingrese su DNI.</label>
-                <input type="text" class="main__input" id="dni" placeholder="dni">
+                <input type="text" class="main__input" id="dni" placeholder="dni" name="dni">
 
 
                 <label for="edad" class="main__label">Ingrese su edad.</label>
-                <input type="text" class="main__input" id="edad" placeholder="edad">
+                <input type="text" class="main__input" id="edad" placeholder="edad" name="edad">
 
 
                 <label for="deporte" class="main__label">Ingrese su deporte.</label>
-                <input type="text" class="main__input" id="deporte" placeholder="deporte">
+                <input type="text" class="main__input" id="deporte" placeholder="deporte" name="deporte">
 
 
                 <label for="entrenador" class="main__label">Ingrese el nombre de su entrenador.</label>
-                <input type="text" class="main__input" id="entrenador" placeholder="entrenador">
+                <input type="text" class="main__input" id="entrenador" placeholder="entrenador" name="entrenador">
 
 
                 <label for="isntitucion" class="main__label">Ingrese el nombre de su institucion.</label>
-                <input type="text" class="main__input" id="institucion" placeholder="institucion">
+                <input type="text" class="main__input" id="institucion" placeholder="institucion" name="institucion">
 
                 <button type="submit" class="main__submit" id="submit">Enviar</button>
             </form>
@@ -70,7 +70,7 @@
             <form class="main__formPre main__form">
                 <div class="main__datos">
                     <label for="dniPre" class="main__label">Ingrese su DNI.</label>
-                    <input type="number" class="main__input" id="dniPre" placeholder="Sin puntos ni espacios.">
+                    <input type="number" class="main__input" id="dniPre" placeholder="Sin puntos ni espacios." name="dni">
                 </div>
                 <div class="main__datos">
                     <label for="cantidad" class="main__label">Ingrese la cantidad de horas de sueño.</label>
@@ -108,25 +108,25 @@
             <form class="main__formPost main__form">
                 <div class="main__datos">
                     <label for="dniPost" class="main__label">Ingrese su DNI.</label>
-                    <input type="number" class="main__input" id="dniPost" placeholder="Sin puntos ni espacios.">
+                    <input type="number" class="main__input" id="dniPost" placeholder="Sin puntos ni espacios."  name="dni">
                 </div>
                 <div class="main__datos">
                     <label for="exigencia" class="main__label">Ingrese el nivel de exigencia percibido en su
                         entrenamiento.</label>
-                    <input type="number" class="main__input" id="exigencia" placeholder="Del 1 al 10">
+                    <input type="number" class="main__input" id="exigencia" placeholder="Del 1 al 10" name="exigencia">
                 </div>
                 <div class="main__datos">
                     <label for="cansancioP" class="main__label">Ingrese el nivel de cansancio post
                         entrenamiento.</label>
-                    <input type="number" class="main__input" id="cansancioP" placeholder="Del 1 al 10">
+                    <input type="number" class="main__input" id="cansancioP" placeholder="Del 1 al 10" name="cansancio">
                 </div>
                 <div class="main__datos">
                     <label for="fatigaP" class="main__label">¿Tiene fatiga o dolor muscular?</label>
-                    <input type="text" class="main__input" id="fatigaP" placeholder="Responda por 'si' o 'no'.">
+                    <input type="text" class="main__input" id="fatigaP" placeholder="Responda por 'si' o 'no'." name="fatiga">
                 </div>
                 <div class="main__datos">
                     <label for="lesionesP" class="main__label">¿Tiene alguna lesion?</label>
-                    <input type="text" class="main__input" id="lesionesP" placeholder="Responda por 'si' o 'no'.">
+                    <input type="text" class="main__input" id="lesionesP" placeholder="Responda por 'si' o 'no'." name="lesiones">
                 </div>
                 <button type="submit" class="main__submit" id="submitPost">Enviar</button>
             </form>

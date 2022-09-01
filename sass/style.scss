@@ -47,7 +47,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        transform: translateX(-60%);
     }
     
     &__h1 {
@@ -62,6 +61,19 @@
         display: flex;
         padding: 0.5rem;
     }
+
+
+    &__darkModeButton {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    width: 5rem;
+    height: 3rem;
+    border: solid 0.12rem gray;
+    border-radius: 0.5rem;
+    
+}
 }
 
 
@@ -95,6 +107,8 @@
         font-size: 1.2rem;
         font-family: Georgia, 'Times New Roman', Times, serif;
         font-weight: lighter;
+        background-color: white;
+        color: black;
     }
 
 
@@ -143,4 +157,31 @@
         margin: 0.1rem;
     }
 }
+
+
+.headerDark {
+    background: linear-gradient(top left, rgb(31, 31, 31), rgb(84, 84, 84));
+    background: linear-gradient(top left, rgba(31, 31, 31, 1.0), rgba(84, 84, 84, 1.0));
+    background: linear-gradient(to bottom right, rgba(31, 31, 31, 1.0), rgba(84, 84, 84, 1.0));
+    
+    
+    &__logo--img {
+        background-color: rgb(255, 0, 0);
+        
+    }
+    
+    &__h1 {
+        color: rgb(255, 255, 255);
+    }
+}
+
+body.dark {
+    filter: invert(1);
+    background-color: #000000;
+    opacity: 1;
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    transition: all 0.5s ease-out;
+}
+
 

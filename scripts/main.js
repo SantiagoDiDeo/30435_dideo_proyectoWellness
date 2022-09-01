@@ -3,73 +3,39 @@
 
 //variables
 
+const header = document.querySelector(".header");
+const main = document.querySelector(".main")
+const btnDark = document.querySelector(".header__darkModeButton")
+
 //deportista
 const formularioDeportista = document.querySelector(".main__formDep");
-const nombreDeportista = document.querySelector("#nombre");
-const apellidoDeportista = document.querySelector("#apellido");
-const dniDeportista = document.querySelector("#dni");
-const edadDeportista = document.querySelector("#edad");
-const deporteDeportista = document.querySelector("#deporte");
-const entrenadorDeportista = document.querySelector("#entrenador");
-const institucionDeportista = document.querySelector("#institucion");
 const botonSubmit = document.querySelector("#submit");
 const btnDeportista = document.querySelector("#btn-deportista");
 const saludo = document.querySelector(".main__saludo");
-const estadisticaP = document.querySelector(".main__estadisticas");
-const prueba = document.querySelector(".fetchPrueba");
-const botonFetch = document.querySelector(".fetch");
+
 
 //pre
 const btnPreWellness = document.querySelector("#btn-preWellness");
 const formularioPreWellness = document.querySelector('.main__formPre');
-const dniPre = document.querySelector('#dniPre')
-const cantidadPre = document.querySelector('#cantidad');
-const calidadPre = document.querySelector('#calidad');
-const animicoPre = document.querySelector('#animico');
-const estresPre = document.querySelector('#estres');
-const cansancioPre = document.querySelector('#cansancio');
-const fatigaPre = document.querySelector('#fatiga');
-const lesionesPre = document.querySelector('#lesiones');
 const submitPre = document.querySelector('#submitPre');
 
 //post
 const btnPostWellness = document.querySelector("#btn-postWellness");
 const formularioPostWellness = document.querySelector('.main__formPost');
-const dniPost = document.querySelector('#dniPost');
-const exigenciaPost = document.querySelector('#exigencia');
-const cansancioPost = document.querySelector('#cansancioP');
-const fatigaPost = document.querySelector('#fatigaP');
-const lesionesPost = document.querySelector('#lesionesP');
 const submitPost = document.querySelector('#submitPost');
 
-//deportista
+//estadisticas
+let btnEstadisticas = document.querySelector(".btn-estadisticas");
+const estadisticaP = document.querySelector(".main__estadisticas");
+
+//fetch
+const prueba = document.querySelector(".fetchPrueba");
+const botonFetch = document.querySelector(".fetch");
+
+//arrays
 let deportistas = [];
 let preWellness = [];
 let postWellness = [];
-let nombre;
-let apellido;
-let dni;
-let edad;
-let deporte;
-let entrenador;
-let institucion;
-
-//pre
-let dniP;
-let cantidad;
-let calidad;
-let animico;
-let estres;
-let cansancio;
-let fatiga;
-let lesiones;
-
-//post
-let dniPo;
-let exigenciaP;
-let cansancioP;
-let fatigaP;
-let lesionesP;
 
 
 //constructores
@@ -175,11 +141,11 @@ const alertas = {
             icon: 'success',
             title: 'Deportista agregado correctamente',
             showConfirmButton: false,
-            timer: 4000
+            timer: 2000
             });
     },
 
-        //
+        
     error: () => {
         const err = {
             icon: 'error',
@@ -191,40 +157,18 @@ const alertas = {
             err
         );
         
-    }
+    },
+
+    success2 : () => {
+        Swal.fire({
+            icon: 'success',
+            title: 'Formulario completado!',
+            timer: 1500,
+        })
+    },
 
 };
 
-
-
-
-//localStorage
-const enviarForm = () => {
-
-    nombre = nombreDeportista.value;
-    apellido = apellidoDeportista.value;
-    dni = dniDeportista.value;
-    edad = edadDeportista.value;
-    deporte = deporteDeportista.value;
-    entrenador = entrenadorDeportista.value;
-    institucion = institucionDeportista.value;
-
-    let nuevoDeportista = new Deportista(nombre, apellido, dni, edad, deporte, entrenador, institucion)
-    deportistas.push(nuevoDeportista);
-    
-    localStorage.setItem('deportistas', JSON.stringify(deportistas));
-
-};
-
-
-
-//listener
-formularioDeportista.addEventListener('submit', () => {
-    formularioDeportista.style.display = 'none';
-    enviarForm();
-    success();
-    saludo.innerHTML = `Bienvenid@ ${nombre}, ya podes iniciar el test Pre Training Wellness`;
-});
 
 
 
@@ -233,44 +177,35 @@ formularioDeportista.addEventListener('submit', () => {
 
 /* FORMULARIO PREWELLNESS */
 
-
 // guardado de datos en localstorage
 const manejoDatos = () => {
 
-    const info = [];
-
-        const datosFormulario = (f) => {
-
-            f.querySelectorAll("input")
-            .forEach(e => {                     //aca problema
-               // console.log(e.value)
-
-                info.push({
-            cantidad : e.name == "cantidad" ? e.value : null,
-            calidad : e.name == "calidad" ? e.value : null,
-            animico : e.name == "animico" ? e.value : null,
-            estres : e.name == "estres" ? e.value : null ,
-            cansancio : e.name == "cansancio" ? e.value : null,
-            fatiga : e.name == "fatiga" ? e.value : null,
-            lesiones : e.name == "lesiones" ? e.value : null,
+    
+    const datosFormulario = (f) => {
         
-            fatiga : fatigaPre.value == 'si'  ? true :
-                    fatigaPre.value == 'no' ? false : alertas.error(),
-        
-            lesiones: lesionesPre.value == 'si' ? true :
-                    lesionesPre.value =='no' ? false : alertas.error()
-                
-                
-            });
-            });
+        const info = [];
+        let obj = {};
             
+            f.querySelectorAll("input")
+            .forEach(e => {                    
+            info.push([e.name,e.value])
+        
+                    });
 
-            console.log(info);
-        return info;
+
+                info.map((e) => {
+                    obj[e[0]] = e[1]
+                    if(e[0]== 'fatiga' || e[0] == 'lesiones') {
+                        obj[e[0]] = booleanChecker(e[1]) ? booleanChecker(e[1]) : alertas.error();
+                    } ;
+                });
+                
+            console.log(obj);       //que hago con los datos
+        
     };
 
     //funcion para postear los datos de prewellness
-    const postDatos = () => {
+    const postDatosPre = () => {
     
         let nuevoPreWellness = new PreWellness(dniP, cantidad, calidad, animico, estres, cansancio, fatiga, lesiones);
         preWellness.push(nuevoPreWellness);
@@ -279,7 +214,26 @@ const manejoDatos = () => {
     
     };
 
-    //listener
+    const postDatosPost = () => {
+
+        let nuevoPostWellness = new PostWellness(dniPo, exigenciaP, cansancioP, fatigaP, lesionesP);
+        postWellness.push(nuevoPostWellness)
+    
+        localStorage.setItem('postwellness', JSON.stringify(postWellness));
+
+    }
+
+    //listener dep
+formularioDeportista.addEventListener('submit', (e) => {
+    e.preventDefault()
+    //formularioDeportista.style.display = 'none';
+    //enviarForm();
+    datosFormulario(formularioDeportista)
+    alertas.success();
+    saludo.innerHTML = `Bienvenid@ ${nombre}, ya podes iniciar el test Pre Training Wellness`;
+});
+
+    //listener pre
 formularioPreWellness.addEventListener('submit', (e) =>{
     e.preventDefault();
     formularioPreWellness.style.display = 'none';
@@ -289,76 +243,31 @@ formularioPreWellness.addEventListener('submit', (e) =>{
 );
 
 
+//listener post
+formularioPostWellness.addEventListener('submit', (e) =>{
+    e.preventDefault();
+    formularioPostWellness.style.display = 'none';
+    datosFormulario(formularioPostWellness)
+    
+    }
+);
 
 };
 
-getForm();
-manejoDatos();
 
-
-
-
-
-
-
-
-
-
-
-/* const deportistaWellness = deportistas.concat(preWellness);
-localStorage.setItem('deportistaPre', JSON.stringify(deportistaWellness)); */
-
-
-
+function booleanChecker(prop) {
+    if (prop === "si" || prop === "no") return prop
+    else return
+};
 
 //FORMULARIO POST WELLNESS
 
 
-/* btnPostWellness.onclick = () => {
-    crearPostWellness();
-    formularioPreWellness.style.display = 'none';
-    formularioDeportista.style.display = 'none';
-} */
 
 
-//localStorage
-const alertPost = () => {
-    dniPo = dniPost.value;
-    exigenciaP = exigenciaPost.value;
-    cansancioP = cansancioPost.value;
-    fatigaP = fatigaPost.value == 'si'  ? true :
-                fatigaPost.value == 'no' ? false :
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Valor incorrecto',
-                    text: 'Responda por "si" o por "no"',
-                    
-                });
-    lesionesP = lesionesPost.value == 'si' ? true :
-                lesionesPost.value =='no' ? false :
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Valor incorrecto',
-                    text: 'Responda por "si" o por "no"',
-                    
-                });
 
 
-    let nuevoPostWellness = new PostWellness(dniPo, exigenciaP, cansancioP, fatigaP, lesionesP);
-        postWellness.push(nuevoPostWellness)
-    
-        localStorage.setItem('postwellness', JSON.stringify(postWellness));
 
-}
-
-//listener
-formularioPostWellness.addEventListener('submit', (e) =>{
-    e.preventDefault();
-    formularioPostWellness.style.display = 'none';
-    alertPost();
-    
-    }
-);
 
 
 //fetch
@@ -409,10 +318,72 @@ const alertBuscarDep = () => {
     })
 }
 
-let btnEstadisticas = document.querySelector(".btn-estadisticas");
+
 btnEstadisticas.onclick = () => {
     estadisticas();
 };
+
+btnDark.addEventListener('click', () =>{
+    document.body.classList.toggle("dark")
+
+});
+
+getForm();
+manejoDatos();
+
+
+
+
+
+
+    const guardarFormulario = () => {
+
+        deportistas.find((e) => {
+            if(e.dni == dni.value) {
+                e.preWellness = postDatosPre();
+            };
+        });
+    
+        //deportistas.elemento.datosPre= objSubmit;   preguntar
+    };
+    
+    /* 
+    
+    listadeportistas(Array)
+    cada deportista es un objeto
+    cada obj tiene su dni y sus prop
+    
+    const arrayPrueba = [
+        {
+            dni: 123456,
+            nombre: "juan",
+            apellido: "perez",
+            datosPre: {},
+            datoPost: {},
+            
+        }
+    ]
+    
+    arrayPrueba.find((elemento) => {
+        if(elemento.dni == dni.value) {
+            elemento.pre = postDatosPre()
+        } 
+    })
+        arrayPrueba.elemento.datosPre = objSubmit
+    */
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -443,15 +414,55 @@ let avs = function(x) {console.log(x)} ;
     formularioPostWellness.style.display = "flex";
 } */
 
+/* const deportistaWellness = deportistas.concat(preWellness);
+localStorage.setItem('deportistaPre', JSON.stringify(deportistaWellness)); */
 
+/* btnPostWellness.onclick = () => {
+    crearPostWellness();
+    formularioPreWellness.style.display = 'none';
+    formularioDeportista.style.display = 'none';
+} */
 
+//localStorage
+/* const alertPost = () => {
+    dniPo = dniPost.value;
+    exigenciaP = exigenciaPost.value;
+    cansancioP = cansancioPost.value;
+    fatigaP = fatigaPost.value == 'si'  ? true :
+                fatigaPost.value == 'no' ? false :
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor incorrecto',
+                    text: 'Responda por "si" o por "no"',
+                    
+                });
+    lesionesP = lesionesPost.value == 'si' ? true :
+                lesionesPost.value =='no' ? false :
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Valor incorrecto',
+                    text: 'Responda por "si" o por "no"',
+                    
+                });
+} */
 
+//localStorage
+/* const enviarForm = () => {
 
+    nombre = nombreDeportista.value;
+    apellido = apellidoDeportista.value;
+    dni = dniDeportista.value;
+    edad = edadDeportista.value;
+    deporte = deporteDeportista.value;
+    entrenador = entrenadorDeportista.value;
+    institucion = institucionDeportista.value;
 
+    let nuevoDeportista = new Deportista(nombre, apellido, dni, edad, deporte, entrenador, institucion)
+    deportistas.push(nuevoDeportista);
+    
+    localStorage.setItem('deportistas', JSON.stringify(deportistas));
 
-
-
-
+}; */
 
 
 
@@ -460,19 +471,20 @@ let avs = function(x) {console.log(x)} ;
 
 // DUDAS
 
+
 /* 
 1) poner objeto dentro de array
 2) buscar deportista en base al dni o nombre y apellido y mostrar datos
 3) mostrar deportistas con fetch a traves del boton de ver estadisticas
+
 4) entender if, for, for..if, for.. of, for..in 
 
 
 
---agregar names en html
---copiar cantidad en los demas inputs
 
 buscar exportacion y requerimiento
 investiga react y webpack
+buscar libreria para modo oscuro
 
 
 

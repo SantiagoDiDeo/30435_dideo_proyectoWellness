@@ -21,7 +21,7 @@
     const jsonTitulo = document.querySelector('.json__h3');
     const jsonUl = document.querySelector('.json__ul')
     const botonJson = document.querySelector(".btn__json");
-    const url = '../json/deportistas.json'
+    const url = './json/deportistas.json'
 
     //array
     let deportistas = [];

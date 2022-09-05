@@ -21,7 +21,7 @@
     const jsonTitulo = document.querySelector('.json__h3');
     const jsonUl = document.querySelector('.json__ul')
     const botonJson = document.querySelector(".btn__json");
-    const url = '../json/deportistas.json'
+    const url = './json/deportistas.json'
 
     //array
     let deportistas = [];
@@ -150,14 +150,13 @@ const manejoDatos = () => {
         };
 
     //fetch de local json
-    const getDeportistas = async (url) => {             //PREGUNTAR
-        let res = await fetch(url);
-        return res = await res.json();     
-        };
+    const getDeportistas = async (url) => {             
+    let res = await fetch(url)
+    return res = await res.json();}     
 
     //agregar json a html mediante libreria
     const addHtml = async () => {
-        let datos = await getDeportistas(url);
+        let datos =  await getDeportistas(url);
         jsonTitulo.textContent = 'Todos los deportistas';
         
         datos.forEach(e => {

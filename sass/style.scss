@@ -68,10 +68,12 @@
     align-items: center;
     align-self: center;
     justify-content: center;
+    padding: 0 2.8rem;
     width: 5rem;
     height: 3rem;
     border: solid 0.12rem gray;
     border-radius: 0.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     
 }
 }
@@ -97,7 +99,7 @@
         display: flex;
         flex-direction: column;
         padding: 1rem;
-        margin: 1rem;
+        margin: 1.4rem;
         width: 10rem;
         height: 4rem;
         align-items: center;
@@ -182,6 +184,39 @@ body.dark {
     background-size: 80px 140px;
     background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
     transition: all 0.5s ease-out;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    background-color: #424242;
+    width: 90vw;
+    height: 90vh;
+}
+
+.json__content {
+    background-size: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image:  linear-gradient(30deg, #8d8d8d 12%, transparent 12.5%, transparent 87%, #8d8d8d 87.5%, #8d8d8d), linear-gradient(150deg, #8d8d8d 12%, transparent 12.5%, transparent 87%, #8d8d8d 87.5%, #8d8d8d), linear-gradient(30deg, #8d8d8d 12%, transparent 12.5%, transparent 87%, #8d8d8d 87.5%, #8d8d8d), linear-gradient(150deg, #8d8d8d 12%, transparent 12.5%, transparent 87%, #8d8d8d 87.5%, #8d8d8d), linear-gradient(60deg, #8d8d8d77 25%, transparent 25.5%, transparent 75%, #8d8d8d77 75%, #8d8d8d77), linear-gradient(60deg, #8d8d8d77 25%, transparent 25.5%, transparent 75%, #8d8d8d77 75%, #8d8d8d77);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+}
+
+.json__ul {
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(143, 143, 143);
+    width: 80vw;
+};
+
+.json__liInd {
+    padding: 0.8rem;
+    text-align: center;
+    -webkit-text-stroke: medium;
 }
 
 

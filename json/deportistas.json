@@ -1,0 +1,165 @@
+[
+    {
+    "Nombre" : "Tomas",
+    "Apellido": "Gonzalez",
+    "Dni": "40854412",
+    "Edad": "24",
+    "Deporte": "Tenis",
+    "Entrenador": "Mauricio Perez",
+    "Institucion": "Club Estrella",
+    "prewellness": [{
+        "Fecha": "hh", 
+        "Dni": "40854412",
+        "Cantidad": "8",
+        "Calidad": "7",
+        "Animico": "8",
+        "Estres": "4",
+        "Cansancio": "5",
+        "Fatiga": "no",
+        "Lesiones": "no"
+
+    }],
+    "postwellness": [{
+        "Dni": "40854412",
+        "Exigencia": "7",
+        "Cansancio": "7",
+        "Fatiga": "si",
+        "Lesiones": "no"
+    }]
+    },
+    {
+    "Nombre" : "Marcos",
+    "Apellido": "Grutini",
+    "Dni": "36558741",
+    "Edad": "28",
+    "Deporte": "Atletismo",
+    "Entrenador": "Fernando Cruz",
+    "Institucion": "Club Atletico Ferro",
+    "prewellness": [{
+        "Dni": "36558741",
+        "Cantidad": "5",
+        "Calidad": "3",
+        "Animico": "5",
+        "Estres": "8",
+        "Cansancio": "6",
+        "Fatiga": "si",
+        "Lesiones": "si"
+
+    }],
+    "postwellness": [{
+        "Dni": "36558741",
+        "Exigencia": "5",
+        "Cansancio": "7",
+        "Fatiga": "si",
+        "Lesiones": "si"
+    }]
+    },
+    {
+    "Nombre" : "Maria",
+    "Apellido": "Troyano",
+    "Dni": "42963533",
+    "Edad": "23",
+    "Deporte": "volley",
+    "Entrenador": "Matias Lopez",
+    "Institucion": "Club Fernandez",
+    "prewellness": [{
+        "Dni": "42963533",
+        "Cantidad": "6",
+        "Calidad": "7",
+        "Animico": "7",
+        "Estres": "5",
+        "Cansancio": "5",
+        "Fatiga": "no",
+        "Lesiones": "no"
+
+    }],
+    "postwellness": [{
+        "Dni": "42963533",
+        "Exigencia": "9",
+        "Cansancio": "8",
+        "Fatiga": "si",
+        "Lesiones": "no"
+    }]
+    },
+    {
+    "Nombre" : "Angela",
+    "Apellido": "Torres",
+    "Dni": "39212005",
+    "Edad": "26",
+    "Deporte": "Gimnasia Artistica",
+    "Entrenador": "Carla Torrazagal",
+    "Institucion": "Club Artistico",
+    "prewellness": [{
+        "Dni": "39212005",
+        "Cantidad": "7",
+        "Calidad": "9",
+        "Animico": "9",
+        "Estres": "3",
+        "Cansancio": "3",
+        "Fatiga": "no",
+        "Lesiones": "no"
+
+    }],
+    "postwellness": [{
+        "Dni": "39212005",
+        "Exigencia": "6",
+        "Cansancio": "5",
+        "Fatiga": "si",
+        "Lesiones": "no"
+    }]
+    },
+    {
+    "Nombre" : "Guido",
+    "Apellido": "Paez",
+    "Dni": "35998769",
+    "Edad": "30",
+    "Deporte": "Tekwondo",
+    "Entrenador": "Mauricio Perez",
+    "Institucion": "Club Estrella",
+    "prewellness": [{
+        "Dni": "35998769",
+        "Cantidad": "7",
+        "Calidad": "6",
+        "Animico": "7",
+        "Estres": "6",
+        "Cansancio": "5",
+        "Fatiga": "si",
+        "Lesiones": "no"
+
+    }],
+    "postwellness": [{
+        "Dni": "35998769",
+        "Exigencia": "6",
+        "Cansancio": "6",
+        "Fatiga": "si",
+        "Lesiones": "no"
+    }]
+    },
+    {
+    "Nombre" : "Micaela",
+    "Apellido": "Aleman",
+    "Dni": "37558910",
+    "Edad": "27",
+    "Deporte": "Futbol",
+    "Entrenador": "Mariana Roble",
+    "Institucion": "Club Atletico Federacion",
+    "prewellness": [{
+        "Dni": "37558910",
+        "Cantidad": "4",
+        "Calidad": "5",
+        "Animico": "7",
+        "Estres": "9",
+        "Cansancio": "7",
+        "Fatiga": "no",
+        "Lesiones": "si"
+
+    }],
+    "postwellness": [{
+        "Dni": "37558910",
+        "Exigencia": "8",
+        "Cansancio": "9",
+        "Fatiga": "si",
+        "Lesiones": "si"
+    }]
+    }
+]
